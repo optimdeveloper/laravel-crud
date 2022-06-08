@@ -197,7 +197,10 @@ Route::group([
     Route::get('products', [GuestController::class, 'list_products'])->name("guest.list_products");
     Route::delete('deleteProduct/{id}', [GuestController::class, 'delete_product'])->name("guest.delete_product");
     Route::post('updateProduct/{id}', [GuestController::class, 'update_product'])->name("guest.update_product");
-
+    Route::get('/create-symlink', function (){
+        symlink(storage_path('/app/public'), public_path('Image'));
+        echo "Symlink Created. Thanks";
+    });
 });
 
 Route::group([
